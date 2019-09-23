@@ -296,7 +296,7 @@ class jwDistribution {
 ////////////////////////////////////
 function randomPoint() {
     let x = Math.random(); 
-    let y = 1.0 - (x + (Math.random()-.5) / 3.0); //for demo, linear relationship with random error term. 
+    let y = 1.0 - (x + (Math.random()-.5) / 2.0); //for demo, linear relationship with random error term. 
     return new Array(x, y); 
 }
 
