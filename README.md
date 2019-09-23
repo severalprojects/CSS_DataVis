@@ -1,7 +1,7 @@
 # CSS_DataVis
 Dynamic data visualization with vanilla javascript and CSS
 
-![splashimage] (jwdv.png)
+![splashimage] (jwdv.jpg)
 
 Trying to do some dynamic data visualizations with no framework, only plain JS and CSS. 
 
