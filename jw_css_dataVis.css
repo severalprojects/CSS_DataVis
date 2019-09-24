@@ -5,9 +5,13 @@
 
 #outerframe {
     position: absolute; 
-    background: rgb(255, 255, 255); 
+    background: rgb(255, 255, 255);
+    background-size: 10px 10px;
+    background-image:
+      linear-gradient(to right, rgb(78, 207, 247) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(78, 207, 247) 1px, transparent 1px); 
 	display: flex;
-	border: 1px solid #000;
+	border: 1px solid rgb(78, 207, 247);
 	font-size: 0;
 	flex-wrap: wrap;
     width: 975px;
@@ -46,6 +50,7 @@
 
 .distribution {
     border: 1px solid black; 
+    background: white;
     position: absolute; 
     overflow: hidden; 
 
