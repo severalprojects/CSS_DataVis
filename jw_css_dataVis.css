@@ -56,6 +56,34 @@
 
 }
 
+.dist_data {
+    border: 0px solid black; 
+    width: 50%; 
+    height: 100px; 
+    background: white;
+    position: absolute; 
+    top: 5px; 
+    left: 5px; 
+    color: black; 
+    font-size: 12px;  
+    font-family: "Trebuchet MS", Helvetica, sans-serif; 
+
+}
+
+.bar_data {
+    border: 0px solid black; 
+    width: 50%; 
+    height: 100px; 
+    background: white;
+    position: absolute; 
+    top: 50px; 
+    left: 5px; 
+    color: black; 
+    font-size: 12px;  
+    font-family: "Trebuchet MS", Helvetica, sans-serif; 
+
+}
+
 .bar {
     background: blue; 
     /* border: 1px solid black; */
@@ -91,3 +119,13 @@
     background: rgb(180, 185, 236); 
 }
 
+.ro_info_bar {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    border: 1px solid black; 
+    height: 15px; 
+    width: 100px;
+    background: rgb(100, 200, 200); 
+
+}

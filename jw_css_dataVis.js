@@ -137,6 +137,16 @@ class jwDistribution {
         this.jwcontainer.setAttribute('style',`width: ${this.width}; height: ${this.height}; top: ${this.top}px; left: ${this.left}px; `);
         this.jwcontainer.className ="distribution"; 
        
+        this.dist_data = document.createElement("div"); 
+        this.dist_data.className = "dist_data"; 
+        this.dist_data.innerHTML = "MEAN:<br>VARIANCE: "; 
+        this.jwcontainer.appendChild(this.dist_data);         
+
+        this.bar_data = document.createElement("div"); 
+        this.bar_data.className = "bar_data"; 
+        this.bar_data.innerHTML = ""; 
+        this.jwcontainer.appendChild(this.bar_data);   
+
         this.bars = new Array(); //store array of points
         this.data = new Array(); //store data points
         
@@ -149,6 +159,10 @@ class jwDistribution {
 
         this.parent = document.getElementById(parent_container); 
         this.parent.appendChild(this.jwcontainer); 
+
+        this.drawBars = this.drawBars.bind(this); 
+
+
          
     }
 
@@ -202,11 +216,28 @@ class jwDistribution {
             let barheight = listofValues[i]*(this.height); 
             let bartop = Math.floor(this.height*(1-listofValues[i])); 
             let barleft = i*this.barWidth; 
+            let barright = barleft+this.barWidth; 
+            let thepercentage = (listofValues[i]*100).toFixed(2); 
+            let barlow = this.lowbar + i*(this.graphrange/this.num_bins); 
+            let barhigh = (barlow + (this.graphrange/this.num_bins)).toFixed(2); 
 
             newbar.style=`position: absolute; top: ${bartop}px; left: ${barleft}px; height: ${barheight}; width: ${this.barWidth}; opacity: .25;` ; 
             newbar.classList = "bar"; 
+            newbar.onmouseenter = function() {
+                newbar.parentNode.childNodes[1].innerHTML = `${thepercentage}% OF DATA BETWEEN<br> ${barlow} and ${barhigh}`; 
+            }
+            newbar.onmouseleave = function() {
+                newbar.parentNode.childNodes[1].innerHTML = ""; 
+
+            }
             // newbar.onmouseover = "background = #000000"
             this.bars.push(newbar); 
+
+            // var ro_info = document.createElement("div");
+            // ro_info.className = "ro_info_bar"; 
+            // newbar.appendChild(ro_info); 
+
+
             this.jwcontainer.appendChild(newbar); 
             // this.jwcontainer.removeChild(newbar); 
         }
@@ -288,12 +319,36 @@ class jwDistribution {
 
     }
 
+    getMoments() {
+        var the_mean; 
+        the_mean = 0; 
+        for (i = 0; i < this.data.length; i++) {
+            the_mean += this.data[i]; 
+        }
+        the_mean = the_mean/this.data.length; 
+
+        var the_variance; 
+        the_variance = 0; 
+
+        for (i = 0; i < this.data.length; i++) {
+            the_variance += Math.pow((the_mean - this.data[i]), 2); 
+        }
+
+        the_variance = the_variance/this.data.length; 
+        this.dist_data.innerHTML = `MEAN: ${the_mean.toFixed(3)}<br>VARIANCE: ${the_variance.toFixed(3)}`
+        return [the_mean, the_variance]; 
+
+    }
+
+
 
 }
 
 
 
-////////////////////////////////////
+
+///////////////EXAMPLES OF CLASSES HERE///////////////////////////////////////
+
 function randomPoint() {
     let x = Math.random(); 
     let y = 1.0 - (x + (Math.random()-.5) / 2.0); //for demo, linear relationship with random error term. 
@@ -348,7 +403,7 @@ test_distribution.update_distribution(20);
 
 
 //update the distribution with new data every 100ms 
-setInterval(function(){test_distribution.addData([binomialDist(100, .5)]); test_distribution.update_distribution(20)}, 100); 
+setInterval(function(){test_distribution.addData([binomialDist(100, .5)]); test_distribution.update_distribution(20); console.log(test_distribution.getMoments())}, 1000); 
 
 //////////////////////////////////////////////////////////////////
 
