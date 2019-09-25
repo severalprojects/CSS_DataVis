@@ -1,7 +1,5 @@
 # CSS_DataVis
-Dynamic data visualization with vanilla javascript and CSS
-
-DEMO [ONLINE HERE](http://www.metarecipes.com/DataVis/)
+Dynamic data visualization with vanilla javascript and CSS. Demo [ONLINE HERE.](http://www.metarecipes.com/DataVis/)
 
 ![alt text](jwdv.jpg)
 
