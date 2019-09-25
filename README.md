@@ -1,6 +1,8 @@
 # CSS_DataVis
 Dynamic data visualization with vanilla javascript and CSS
 
+DEMO [ONLINE HERE](http://www.metarecipes.com/DataVis/)
+
 ![alt text](jwdv.jpg)
 
 Trying to do some dynamic data visualizations with no framework, only plain JS and CSS. 
